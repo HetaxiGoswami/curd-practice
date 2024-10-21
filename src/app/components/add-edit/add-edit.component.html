@@ -1,0 +1,65 @@
+<form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+  <div class="justify-center flex-col items-center pt-8">
+    <h4 class="pl-9">Employee form</h4>
+    <div class="example-container">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput #input placeholder="Name" formControlName="firstname" />
+      </mat-form-field>
+     <!-- <mat-error *ngIf="empForm.get('firstname')?.hasError('required')">
+        First Name is required.
+      </mat-error> 
+      <mat-error *ngIf="empForm.get('firstname')?.hasError('maxLength')">
+        Maximum 20 characters allowed.
+      </mat-error> -->
+
+      <mat-form-field>
+        <mat-label>lastname</mat-label>
+        <input
+          matInput
+          #input
+          placeholder="lastname"
+          formControlName="lastname"
+        />
+      </mat-form-field>
+    </div>
+    <div class="example-container">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput #input placeholder="Email" formControlName="email" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Education</mat-label>
+        <mat-select formControlName="education">
+          <mat-option value="bca">BCA</mat-option>
+          <mat-option value="bba">BBA</mat-option>
+          <mat-option value="msc-it">MSC-IT</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="pl-16 items-center">
+      <label>Select Gender:</label>
+      <mat-radio-group formControlName="gender">
+        <mat-radio-button value="female">female</mat-radio-button>
+        <mat-radio-button value="male">male</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="flex pl-8">
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dob" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-flat-button type="submit">{{data ? 'Update' : 'Save'}}</button>
+  </mat-dialog-actions>
+</form>
